@@ -1,5 +1,6 @@
 package com.example.cicdbackendlink;
 
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -20,5 +21,9 @@ public class PinsService {
 
     public List<Pins> allPins() {
         return pinsRepo.findAll();
+    }
+    @Transactional
+    public void deletePin(String sheepId) {
+         pinsRepo.deleteBySheepId(sheepId);
     }
 }

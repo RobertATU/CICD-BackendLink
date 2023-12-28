@@ -26,5 +26,9 @@ public class PinsController {
         System.out.println(LocalDate.now());
         return new ResponseEntity<>("Pin created successfully", HttpStatus.OK);
     }
+    @DeleteMapping("/removePin/{sheepId}")
+    public void deletePin(@PathVariable String sheepId){
+         pinsService.deletePin(sheepId);
+    }
 
 }
