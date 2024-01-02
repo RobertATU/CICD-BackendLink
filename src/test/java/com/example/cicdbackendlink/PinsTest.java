@@ -5,6 +5,8 @@ import jakarta.validation.Validator;
 import jakarta.validation.ValidatorFactory;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -18,6 +20,7 @@ public class PinsTest {
         pins.setSheepId("newSheep");
         pins.setLongitude(20.321);
         pins.setLatitude(20.123);
+        pins.setDate(LocalDate.now());
        assertTrue(validator.validate(pins).isEmpty());
     }
     @Test
@@ -26,7 +29,8 @@ public class PinsTest {
         pins.setSheepId("");
         pins.setLongitude(2000.321);
         pins.setLatitude(20000.123);
-        assertEquals(3,validator.validate(pins).size());
+        pins.setDate(LocalDate.now().plusDays(1));
+        assertEquals(4,validator.validate(pins).size());
     }
 
 }
