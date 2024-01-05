@@ -19,7 +19,7 @@ public class Pins {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
-
+//test
     @NotBlank
     private String sheepId;
     @DecimalMin(value = "-90.0",message = "Latitude must be between -90 and 90")
